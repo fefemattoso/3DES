@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, FlatList, TouchableOpacity, Image, ScrollView, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, FlatList, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { db, storage } from './firebaseconfig';
 import { collection, addDoc, getDocs, updateDoc, deleteDoc, doc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -123,10 +123,8 @@ export default function App() {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Image source={require('../bokerlest/assets/logo.jpg')} style={styles.logo} />
-        <Text style={styles.title}>Boker Lest</Text>
-      </View>
+      <Text style={styles.title}>Livros Lidos</Text>
+      <Image source={require('../bokerlest/assets/')} style={styles.leafTopLeft} />
       
       <Text style={styles.label}>Nome do Livro</Text>
       <TextInput
@@ -168,23 +166,21 @@ export default function App() {
         onChangeText={setStatusLeitura}
       />
   <View style={styles.buttonContainer}>
-      <Button style={styles.button}
+      <Button 
         title="Selecionar Imagem" 
         onPress={selecionarImagem} 
-        color="#f76240"
+        color="#9e3771"
       />
-<br></br>
+
       {imageUri && (
         <Image source={{ uri: imageUri }} style={styles.imagePreview} />
       )}
 
-      <Button style={styles.button}
+      <Button borderRadius={20}
         title={loading ? "Salvando..." : editingLivroId ? "Atualizar Livro" : "Adicionar Livro"} 
         onPress={adicionarOuAtualizarLivro} 
-        color="#b56a59"
-       
+        color="#b36d94"
       />
-      
   </View>
       <Text style={styles.sectionTitle}>Lista de Livros</Text>
       <FlatList style={styles.livroList}
@@ -223,30 +219,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fcb09d',
+    backgroundColor: '#ffe0f2',
     padding: 20,
-  },
-  header: {
-    display: 'flex',
-    flexDirection: 'collumn',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#f76240',
+    color: '#9e3771',
     textAlign: 'center',
     marginBottom: 20,
-  },
-  logo: {
-    height: 150,
-    width: 150,
-    alignItems: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-    borderRadius: 25,
-    marginRight: 10,
   },
   label: {
     fontSize: 18,
@@ -267,10 +248,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   button: {
+    backgroundColor: '#6b8e23',
     color: '#fff',
     padding: 10,
     borderRadius: 20,
-     
+    marginBottom: 20,
   },
   imagePreview: {
     width: '100%',
@@ -281,7 +263,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#f76240',
+    color: '#9e3771',
     marginTop: 20,
     marginBottom: 10,
   },

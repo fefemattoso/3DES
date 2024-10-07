@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades da Turma</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js"></script>
+    <script src="../js/firebase.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <span>Nome do Professor</span>
+            <button class="btn-sair" onclick="window.location.href='principal.html'">Sair</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Atividades</h2>
+        <form id="atividadeForm">
+            <input type="text" id="atividadeNome" placeholder="Nome da Atividade" required>
+            <button type="submit">Cadastrar Atividade</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Nome</th>
+                </tr>
+            </thead>
+            <tbody id="atividadeList">
+                <!-- Lista de atividades -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const turmaId = 'ID_DA_TURMA_SELECIONADA';
+
+        // Cadastrar nova atividade
+        document.getElementById('atividadeForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const atividadeNome = document.getElementById('atividadeNome').value;
+
+            const atividadeId = database.ref('atividades/' + turmaId).push().key;
+            database.ref('atividades/' + turmaId + '/' + atividadeId).set({
+                nome: atividadeNome
+            });
+
+            document.getElementById('atividadeNome').value = ''; // Limpa o campo
+        });
+
+        // Listar atividades
+        const atividadeList = document.getElementById('atividadeList');
+        database.ref('atividades/' + turmaId).on('value', snapshot => {
+            atividadeList.innerHTML = '';
+            let count = 1;
+            snapshot.forEach(childSnapshot => {
+                const atividade = childSnapshot.val();
+                const row = `<tr>
+                    <td>${count++}</td>
+                    <td>${atividade.nome}</td>
+                </tr>`;
+                atividadeList.innerHTML += row;
+            });
+        });
+    </script>
+</body>
+</html>

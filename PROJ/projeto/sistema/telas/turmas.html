@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Turmas</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-database.js"></script>
+    <script src="../js/firebase.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <span>Nome do Professor</span>
+            <button class="btn-sair" id="btnLogout">Sair</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Turmas</h2>
+        <form id="turmaForm">
+            <input type="text" id="turmaNome" placeholder="Nome da Turma" required>
+            <button type="submit">Cadastrar Turma</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Nome</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody id="turmaList">
+                <!-- Lista de turmas será exibida aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Função para logout
+        document.getElementById('btnLogout').addEventListener('click', function() {
+            auth.signOut().then(() => {
+                window.location.href = 'login.html'; // Redireciona para a página de login
+            });
+        });
+
+        // Cadastrar nova turma
+        document.getElementById('turmaForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita o reload da página
+
+            const turmaNome = document.getElementById('turmaNome').value;
+
+            // Adicionar turma ao Firebase
+            const turmaId = database.ref('turmas').push().key; // Cria um novo ID exclusivo para a turma
+            database.ref('turmas/' + turmaId).set({
+                nome: turmaNome
+            });
+
+            document.getElementById('turmaNome').value = ''; // Limpa o campo após cadastrar
+        });
+
+        // Listar as turmas cadastradas
+        const turmaList = document.getElementById('turmaList');
+        database.ref('turmas').on('value', snapshot => {
+            turmaList.innerHTML = ''; // Limpa a tabela antes de preencher
+            let count = 1;
+            snapshot.forEach(childSnapshot => {
+                const turma = childSnapshot.val();
+                const row = `<tr>
+                    <td>${count++}</td>
+                    <td>${turma.nome}</td>
+                    <td>
+                        <button class="btn-excluir" onclick="removerTurma('${childSnapshot.key}')">Excluir</button>
+                        <button class="btn-visualizar" onclick="visualizarTurma('${childSnapshot.key}')">Visualizar</button>
+                    </td>
+                </tr>`;
+                turmaList.innerHTML += row;
+            });
+        });
+
+        // Função para remover uma turma
+        function removerTurma(turmaId) {
+            database.ref('turmas/' + turmaId).remove();
+        }
+
+        // Função para visualizar as atividades de uma turma
+        function visualizarTurma(turmaId) {
+            // Redireciona para a página de atividades, passando o ID da turma na URL
+            window.location.href = 'atividades.html?turmaId=' + turmaId;
+        }
+    </script>
+</body>
+</html>

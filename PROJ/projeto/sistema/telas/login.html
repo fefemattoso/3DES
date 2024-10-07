@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Bem Vindo</h2>
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="E-Mail" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+        <p id="error-message" style="color:red;"></p> <!-- Exibe a mensagem de erro -->
+        <!-- Adicionando link para cadastro -->
+        <p>Não tem uma conta? <a href="cadastro.html">Cadastrar</a></p>
+    </div>
+    
+    <script src="js/login.js"></script>
+</body>
+</html>

@@ -1,17 +1,17 @@
 [
     {
         "id": 1,
-        "nome": "Desenvolvimento de Sistemas 2DES",
+        "nome": "4S Física",
         "professorId": 1
     },
     {
         "id": 2,
-        "nome": "Desenvolvimento de Sistemas 3DES",
+        "nome": "6S Física",
         "professorId": 1
     },
     {
         "id": 3,
-        "nome": "Eletrônica 3EA",
+        "nome": "2S Astronomia",
         "professorId": 1
     }
 ]

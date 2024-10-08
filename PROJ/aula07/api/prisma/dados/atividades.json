@@ -1,17 +1,17 @@
 [
     {
         "id": 1,
-        "descricao": "Desenvolver um sistema de controle de estoque",
+        "descricao": "Física Teórica",
         "turmaId": 1
     },
     {
         "id": 2,
-        "descricao": "Desenvolver uma Análise de Risco SWOT",
+        "descricao": "Física Experimental",
         "turmaId": 1
     },
     {
         "id": 3,
-        "descricao": "Criar um Cronograma de Atividades",
+        "descricao": "Estrelas",
         "turmaId": 2
     }
 ]

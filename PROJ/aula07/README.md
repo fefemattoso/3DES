@@ -63,7 +63,7 @@ npx nodemon
 
 ### 7. Rodar o frontend
 
-- Navegue até a pasta `web` do projeto:
+- Navegue até a pasta `front` do projeto:
 
 ```bash
 cd ../front

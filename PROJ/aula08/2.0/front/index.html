@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automóveis Pátio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Automóveis Pátio</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><button onclick="fetchAreas()">Áreas</button></li>
+            <li><button onclick="fetchAutomoveis()">Automóveis</button></li>
+            <li><button onclick="fetchClientes()">Clientes</button></li>
+            <li><button onclick="fetchConcessionarias()">Concessionárias</button></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="content"></div>
+    </main>
+
+    <script>
+        const apiUrl = 'http://localhost:3000';
+
+        async function fetchAreas() {
+            const response = await fetch(`${apiUrl}/areas`);
+            const areas = await response.json();
+            displayData(areas, 'Áreas');
+        }
+
+        async function fetchAutomoveis() {
+            const response = await fetch(`${apiUrl}/automoveis`);
+            const automoveis = await response.json();
+            displayData(automoveis, 'Automóveis');
+        }
+
+        async function fetchClientes() {
+            const response = await fetch(`${apiUrl}/clientes`);
+            const clientes = await response.json();
+            displayData(clientes, 'Clientes');
+        }
+
+        async function fetchConcessionarias() {
+            const response = await fetch(`${apiUrl}/concessionarias`);
+            const concessionarias = await response.json();
+            displayData(concessionarias, 'Concessionárias');
+        }
+
+        function displayData(data, title) {
+            const contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = `<h2>${title}</h2>`;
+            const list = document.createElement('ul');
+
+            data.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.innerText = JSON.stringify(item);
+                list.appendChild(listItem);
+            });
+
+            contentDiv.appendChild(list);
+        }
+    </script>
+</body>
+</html>

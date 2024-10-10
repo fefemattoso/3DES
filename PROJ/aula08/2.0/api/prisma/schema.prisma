@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Automovel {
+  id            Int        @id @default(autoincrement())
+  modelo        String
+  preco         Float
+  areaId        Int
+  concessionariaId Int
+  Concessionaria Concessionaria @relation(fields: [concessionariaId], references: [id])
+  Area          Area          @relation(fields: [areaId], references: [id])
+}
+
+model Concessionaria {
+  id            Int       @id @default(autoincrement())
+  nome          String
+  automoveis    Automovel[]
+}
+
+model Cliente {
+  id            Int       @id @default(autoincrement())
+  nome          String
+}
+
+model Area {
+  id            Int        @id @default(autoincrement())
+  numero        Int
+  automoveis    Automovel[]
+}

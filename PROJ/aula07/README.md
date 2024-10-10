@@ -9,9 +9,9 @@ Este projeto é um sistema de gestão de turmas e atividades para professores, d
 
 No terminal ou CMD, clone o repositório usando o comando:
 
-\`\`\`bash
+```bash
 git clone <URL-do-repositório>
-\`\`\`
+```
 
 ### 2. Abrir o projeto no Visual Studio Code
 
@@ -19,25 +19,25 @@ git clone <URL-do-repositório>
 
 ### 3. Instalar as dependências
 
-- No terminal do VSCode, navegue até a pasta \`api\` (backend) com o seguinte comando:
+- No terminal do VSCode, navegue até a pasta `api` (backend) com o seguinte comando:
 
-\`\`\`bash
+```bash
 cd api
-\`\`\`
+```
 
 - Instale as dependências necessárias para o projeto:
 
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
-### 4. Configurar o arquivo \`.env\`
+### 4. Configurar o arquivo `.env`
 
-- Na raiz do diretório \`api\`, crie um arquivo \`.env\` com a seguinte variável de ambiente:
+- Na raiz do diretório `api`, crie um arquivo `.env` com a seguinte variável de ambiente:
 
-\`\`\`bash
+```bash
 DATABASE_URL="mysql://root:@localhost:3306/turmas"
-\`\`\`
+```
 
 - Verifique se o MySQL está rodando em sua máquina e se há um banco de dados criado com o nome \`turmas\`.
 
@@ -45,9 +45,9 @@ DATABASE_URL="mysql://root:@localhost:3306/turmas"
 
 - No terminal, execute o seguinte comando para criar as tabelas no banco de dados:
 
-\`\`\`bash
+```bash
 npx prisma migrate dev --name init
-\`\`\`
+```
 
 - Isso criará as tabelas e aplicará as migrations de acordo com o schema definido.
 
@@ -55,27 +55,27 @@ npx prisma migrate dev --name init
 
 - Agora, para iniciar o servidor backend, execute o seguinte comando:
 
-\`\`\`bash
+```bash
 npx nodemon
-\`\`\`
+```
 
-- O servidor ficará disponível por padrão na porta \`3000\`.
+- O servidor ficará disponível por padrão na porta `3000`.
 
 ### 7. Rodar o frontend
 
-- Navegue até a pasta \`web\` do projeto:
+- Navegue até a pasta `web` do projeto:
 
-\`\`\`bash
-cd ../web
-\`\`\`
+```bash
+cd ../front
+```
 
-- Você pode rodar o arquivo \`index.html\` diretamente no navegador, utilizando uma extensão como o **Live Server** no Visual Studio Code para testar a interface.
+- Você pode rodar o arquivo `index.html` diretamente no navegador, utilizando uma extensão como o **Live Server** no Visual Studio Code para testar a interface.
 
 ---
 
 ## Estrutura do Projeto
 
-### Diretório \`api\`
+### Diretório `api`
 
 Esta pasta contém o código do backend, que lida com a lógica de negócio e interações com o banco de dados.
 
@@ -83,7 +83,7 @@ Esta pasta contém o código do backend, que lida com a lógica de negócio e in
 - **routes.js**: Gerencia as rotas da API.
 - **server.js**: Configura o servidor e define as rotas principais da aplicação.
 
-### Diretório \`front\`
+### Diretório `front`
 
 Esta pasta contém o código do frontend, que permite a interação do usuário com o sistema.
 
@@ -100,3 +100,7 @@ Esta pasta contém o código do frontend, que permite a interação do usuário 
 - **Extensão Live Server**: Para rodar o frontend diretamente no navegador com atualizações automáticas.
 
 ---
+
+
+
+

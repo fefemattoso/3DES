@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pátio de Automóveis</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Pátio de Automóveis</h1>
+
+  <div id="patio">
+    <div class="area" id="a5" onclick="alert('Área vazia')">5</div>
+    <div class="area" id="a3" onclick="alert('Área vazia')">3</div>
+    <div class="area" id="a10" onclick="alert('Área vazia')">10</div>
+    <div class="area" id="a1" onclick="alert('Área vazia')">1</div>
+    <div class="area" id="a2" onclick="alert('Área vazia')">2</div>
+    <div class="area" id="a4" onclick="alert('Área vazia')">4</div>
+    <div class="area" id="a6" onclick="alert('Área vazia')">6</div>
+    <div class="area" id="a7" onclick="alert('Área vazia')">7</div>
+    <div class="area" id="a8" onclick="alert('Área vazia')">8</div>
+    <div class="area" id="a9" onclick="alert('Área vazia')">9</div>
+    <div class="area" id="a11" onclick="alert('Área vazia')">11</div>
+  </div>
+
+  <footer>
+    <div id="area" class="modais oculto">
+      <div class="modal1">
+        <div class="barra">
+          <button onclick="area.classList.add('oculto')">X</button>
+        </div>
+        <div id="areaTitulo" class="titulo"></div>
+        <div id="areaConteudo" class="conteudo"></div>
+      </div>
+    </div>
+
+    <div id="venda" class="modais oculto">
+      <div class="modal1">
+        <div class="barra">
+          <button onclick="venda.classList.add('oculto')">X</button>
+        </div>
+        <div id="vendaTitulo" class="titulo"></div>
+        <div id="vendaConteudo" class="conteudo">
+          <form id="formVenda">
+            <div id="campos"></div>
+            <button id="concluir" type="submit" disabled="true">
+              Confirmar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+<script src="index.js"></script>
+
+</html>

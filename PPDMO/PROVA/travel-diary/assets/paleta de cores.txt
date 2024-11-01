@@ -1,0 +1,7 @@
+paleta travel diary:
+
+marrom: #965C2F
+creme: #FCCD9A
+laranja claro: #D99255
+laranja queimado: #AC4E1A
+verde: #385332
